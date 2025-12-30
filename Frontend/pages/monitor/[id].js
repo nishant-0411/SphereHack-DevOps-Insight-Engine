@@ -21,7 +21,7 @@ export default function MonitorPage() {
         }
 
         const interval = setInterval(fetchLogs, 2000)
-        fetchLogs() 
+        fetchLogs()
 
         return () => clearInterval(interval)
     }, [id])
@@ -61,13 +61,54 @@ export default function MonitorPage() {
                 <div ref={logsEndRef} />
             </div>
 
+            <div style={{ marginTop: "10px", display: "flex", gap: "10px" }}>
+                <button
+                    onClick={async () => {
+                        const btn = document.getElementById("analyze-btn");
+                        if (btn) btn.innerText = "Analyzing...";
+                        try {
+                            const res = await fetch(`http://localhost:3005/api/deployments/${id}/analyze`, { method: "POST" });
+                            const data = await res.json();
+                            setDeployment(prev => ({ ...prev, aiAnalysis: data.analysis }));
+                        } catch (e) {
+                            alert("Analysis failed");
+                        } finally {
+                            if (btn) btn.innerText = "🔍 Analyze Log Error";
+                        }
+                    }}
+                    id="analyze-btn"
+                    style={{
+                        padding: "10px 20px",
+                        backgroundColor: "#8a2be2",
+                        color: "white",
+                        border: "none",
+                        borderRadius: "5px",
+                        cursor: "pointer",
+                        fontWeight: "bold"
+                    }}
+                >
+                    🔍 Analyze Log Error
+                </button>
+            </div>
+
             {deployment.aiAnalysis && (
-                <div style={styles.aiBox}>
-                    <h3>🤖 AI Ops - Error Analysis</h3>
-                    <p>{deployment.aiAnalysis}</p>
-                    <button style={styles.fixButton} onClick={() => alert("Auto-Fix applied! Restarting deployment...")}>
-                        Auto-Fix & Redeploy
-                    </button>
+                <div style={
+                    deployment.aiAnalysis.includes("✅ No errors detected")
+                        ? styles.successBox
+                        : styles.aiBox
+                }>
+                    <h3>
+                        {deployment.aiAnalysis.includes("✅ No errors detected")
+                            ? "✅ Deployment Status"
+                            : "🤖 AI Ops - Error Analysis"}
+                    </h3>
+                    <p style={{ whiteSpace: "pre-wrap" }}>{deployment.aiAnalysis}</p>
+
+                    {!deployment.aiAnalysis.includes("✅ No errors detected") && (
+                        <button style={styles.fixButton} onClick={() => alert("Auto-Fix applied! Restarting deployment...")}>
+                            Auto-Fix & Redeploy
+                        </button>
+                    )}
                 </div>
             )}
 
@@ -102,6 +143,14 @@ const styles = {
         border: "1px solid red",
         borderRadius: "8px",
         color: "#d8000c"
+    },
+    successBox: {
+        marginTop: "20px",
+        padding: "20px",
+        backgroundColor: "#f0fff4",
+        border: "1px solid #48bb78",
+        borderRadius: "8px",
+        color: "#2f855a"
     },
     fixButton: {
         marginTop: "10px",

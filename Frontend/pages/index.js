@@ -39,7 +39,6 @@ export default function Welcome() {
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-200 font-sans selection:bg-blue-500/30 relative overflow-hidden">
       
-      {/* Background Tech Grid (Visual Polish) */}
       <div className="absolute inset-0 pointer-events-none opacity-20"
         style={{
             backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)`,
@@ -48,11 +47,9 @@ export default function Welcome() {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent pointer-events-none" />
 
-      {/* --- Navbar --- */}
       <nav className="fixed top-0 left-0 right-0 z-50 w-full border-b border-zinc-800 bg-zinc-950/50 backdrop-blur-md"> 
              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
             <div className="flex items-center gap-2">
               <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center">
                  <span className="font-bold text-white text-sm">DE</span>
@@ -61,8 +58,6 @@ export default function Welcome() {
               DevOps-Insight-Engine
               </h1>
             </div>
-
-            {/* Navbar Actions (Dynamic) */}
             <div className="hidden md:flex items-center space-x-6">
               {user ? (
                 <>
@@ -98,10 +93,8 @@ export default function Welcome() {
         </div>
       </nav>
 
-      {/* --- Main Content --- */}
       <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         
-        {/* Hero Section */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center rounded-full border border-zinc-800 bg-zinc-900/50 px-3 py-1 text-sm text-zinc-400 mb-6">
              <span className="flex h-2 w-2 rounded-full bg-blue-500 mr-2 animate-pulse"></span>
@@ -119,10 +112,8 @@ export default function Welcome() {
           </p>
         </div>
 
-        {/* Action Cards Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           
-          {/* Card 1: Add New Project (Protected) */}
           <div 
             onClick={handleAddProject}
             className="group relative cursor-pointer overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 transition-all hover:border-blue-500/50 hover:bg-zinc-900"
@@ -144,7 +135,6 @@ export default function Welcome() {
             </button>
           </div>
 
-          {/* Card 2: Existing Projects */}
           <div className="group relative cursor-pointer overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 transition-all hover:border-emerald-500/50 hover:bg-zinc-900">
              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 <svg className="w-24 h-24 text-emerald-500" fill="currentColor" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>

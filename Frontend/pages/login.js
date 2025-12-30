@@ -42,10 +42,8 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen w-full flex-row bg-white dark:bg-zinc-950">
-      {/* LEFT SIDE - Login Form */}
       <div className="flex w-full flex-col justify-center px-8 py-12 sm:px-12 md:w-1/2 lg:px-20 xl:w-[40%] z-10 bg-white dark:bg-zinc-950">
         <div className="mx-auto w-full max-w-sm lg:max-w-md">
-          {/* Brand / Logo Area */}
           <div className="mb-8 flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center">
               <svg
@@ -65,16 +63,12 @@ export default function LoginPage() {
               DevOps - Insight - Engine
             </span>
           </div>
-
-          {/* Header */}
           <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">
             Welcome back
           </h2>
           <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
             Please enter your details to sign in.
           </p>
-
-          {/* Form */}
           <form className="mt-8 space-y-6" onSubmit={handleLogin}>
             <div className="space-y-5">
               <div>
@@ -180,10 +174,7 @@ export default function LoginPage() {
           </p>
         </div>
       </div>
-
-      {/* RIGHT SIDE - Visual & Branding */}
       <div className="relative hidden h-screen w-1/2 overflow-hidden bg-zinc-900 md:flex xl:w-[60%]">
-        {/* CSS-based Tech Grid Pattern Background */}
         <div className="absolute inset-0">
                     <img
                         src="https://www.zipitwireless.com/hubfs/IoT%20Deployment.jpg"
@@ -191,12 +182,8 @@ export default function LoginPage() {
                         className="h-full w-full object-cover object-center"
                     />
                 </div>
-        {/* Gradient Overlay for depth */}
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-900/60 to-zinc-900/10" />
-
-        {/* Content Content */}
         <div className="relative z-10 flex h-full flex-col justify-end p-16 text-white xl:p-24">
-         {/* A subtle decorative element hinting at connection */}
          <svg className="h-12 w-12 mb-8 text-blue-500 opacity-80" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/><path d="M4.93 4.93l14.14 14.14"/><path d="M19.07 4.93L4.93 19.07"/></svg>
 
           <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl xl:text-5xl">
