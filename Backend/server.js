@@ -7,15 +7,13 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const PORT = process.env.PORT || 3005;
-
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("MongoDB Connected");
+
+app.use("/api/github", require("./routes/github"))
+app.use("/api/deployments", require("./routes/deployments"))
+app.use("/api/auth", require("./routes/auth"))
+
+const PORT = process.env.PORT || 3005;
     app.listen(PORT, () => {
-      console.log(`Backend running on http://localhost:${PORT}`);
-    });
+  console.log(`Backend running on http://localhost:${PORT}`)
   })
-  .catch(err => {
-    console.error("MongoDB connection error:", err);
-  });
