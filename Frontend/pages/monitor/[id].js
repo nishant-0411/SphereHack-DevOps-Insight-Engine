@@ -12,7 +12,7 @@ export default function MonitorPage() {
 
         const fetchLogs = async () => {
             try {
-                const res = await fetch(`http://localhost:3005/api/deployments/${id}`)
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3005'}/api/deployments/${id}`)
                 const data = await res.json()
                 setDeployment(data)
             } catch (err) {
@@ -67,7 +67,7 @@ export default function MonitorPage() {
                         const btn = document.getElementById("analyze-btn");
                         if (btn) btn.innerText = "Analyzing...";
                         try {
-                            const res = await fetch(`http://localhost:3005/api/deployments/${id}/analyze`, { method: "POST" });
+                            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3005'}/api/deployments/${id}/analyze`, { method: "POST" });
                             const data = await res.json();
                             setDeployment(prev => ({ ...prev, aiAnalysis: data.analysis }));
                         } catch (e) {

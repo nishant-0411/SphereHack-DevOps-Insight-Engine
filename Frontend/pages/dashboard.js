@@ -20,7 +20,7 @@ export default function Dashboard() {
     }
     setUserName(name || email.split("@")[0]);
 
-    fetch("http://localhost:3005/api/deployments")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3005'}/api/deployments`)
       .then((res) => res.json())
       .then((data) => {
         setDeployments(data);
@@ -32,7 +32,7 @@ export default function Dashboard() {
   const handleDelete = async (id) => {
     if (!confirm("Are you sure you want to terminate this deployment?")) return;
     try {
-      await fetch(`http://localhost:3005/api/deployments/${id}`, {
+      await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3005'}/api/deployments/${id}`, {
         method: "DELETE",
       });
       setDeployments((prev) => prev.filter((d) => d._id !== id));

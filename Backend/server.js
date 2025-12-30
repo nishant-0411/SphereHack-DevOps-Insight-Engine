@@ -13,6 +13,7 @@ app.use("/api/github", require("./routes/github"))
 app.use("/api/deployments", require("./routes/deployments"))
 app.use("/api/auth", require("./routes/auth"))
 
-app.listen(3005, () => {
-  console.log("Backend running on http://localhost:3005")
+const PORT = process.env.PORT || 3005;
+app.listen(PORT, () => {
+  console.log(`Backend running on http://localhost:${PORT}`)
 })

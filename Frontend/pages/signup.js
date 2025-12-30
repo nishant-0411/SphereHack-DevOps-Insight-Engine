@@ -12,14 +12,14 @@ export default function Signup() {
     const handleSignup = async (e) => {
         e.preventDefault();
 
-        if(!name || !email || !password) return alert("Please fill all fields");
+        if (!name || !email || !password) return alert("Please fill all fields");
 
         setLoading(true);
         try {
-            const res = await fetch("http://localhost:3005/api/auth/signup", {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3005'}/api/auth/signup`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, email, password }), 
+                body: JSON.stringify({ name, email, password }),
             });
 
             const data = await res.json();
@@ -27,7 +27,7 @@ export default function Signup() {
             if (!res.ok) {
                 throw new Error(data.error || "Signup failed");
             }
-            
+
             if (data.email) {
                 localStorage.setItem("user_email", data.email);
                 localStorage.setItem("user_name", data.name);
@@ -70,7 +70,7 @@ export default function Signup() {
                                 <div className="relative mt-2">
                                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5 text-zinc-400">
-                                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
                                         </svg>
                                     </div>
                                     <input
@@ -92,7 +92,7 @@ export default function Signup() {
                                 <div className="relative mt-2">
                                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5 text-zinc-400">
-                                            <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                                            <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                                         </svg>
                                     </div>
                                     <input
@@ -115,7 +115,7 @@ export default function Signup() {
                                 <div className="relative mt-2">
                                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5 text-zinc-400">
-                                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                            <rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
                                         </svg>
                                     </div>
                                     <input
@@ -167,7 +167,7 @@ export default function Signup() {
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-900/60 to-zinc-900/10" />
                 <div className="relative z-10 flex h-full flex-col justify-end p-16 text-white xl:p-24">
                     <svg className="h-12 w-12 mb-8 text-blue-500 opacity-80" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M12 2v20"/><path d="M2 12h20"/><path d="M4.93 4.93l14.14 14.14"/><path d="M19.07 4.93L4.93 19.07"/>
+                        <path d="M12 2v20" /><path d="M2 12h20" /><path d="M4.93 4.93l14.14 14.14" /><path d="M19.07 4.93L4.93 19.07" />
                     </svg>
 
                     <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl xl:text-5xl">
